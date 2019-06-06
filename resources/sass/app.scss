@@ -5,4 +5,5 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~foundation-sites/scss/foundation.scss';
+@include foundation-everything(true);
