@@ -28,7 +28,12 @@ class HomeController extends Controller
         //Role::create(['name'=>'admin']);
         //Permission::create(['name'=>'modify_user']);
         //auth()->user()->givePermissionTo('modify_user');
-        auth()->user()->assignRole('admin');
+        //auth()->user()->assignRole('admin');
         return view('home');
+    }
+
+    public function home()
+    {
+        return view('welcome');
     }
 }
