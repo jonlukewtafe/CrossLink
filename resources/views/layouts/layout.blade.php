@@ -23,8 +23,8 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    <li><a href="#">Two</a></li>
-                    <li><a href="#">Three</a></li>
+                    <li><a href="/bookmarks">Bookmarks</a></li>
+                    <li><a href="/tags">Tags</a></li>
                 </ul>
             </div>
             <div class="top-bar-right flex-center position-ref full-height">
