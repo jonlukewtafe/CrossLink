@@ -27,14 +27,30 @@
                     <li><a href="#">Three</a></li>
                 </ul>
             </div>
-            <div class="top-bar-right">
+            <div class="top-bar-right flex-center position-ref full-height">
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <a href="{{ url('/profile') }}">Profile</a>
+                            {{--<a href="{{ url('/profile') }}">Profile</a>--}}
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+            </div>
+            <!--<div class="top-bar-right">
                 <ul class="menu vertical medium-horizontal">
                     <li><input type="search" placeholder="Search"></li>
                     <li>
                         <button type="button" class="button">Search</button>
                     </li>
                 </ul>
-            </div>
+            </div>-->
         </div>
         <div class="padding-top-1 large-12 medium-12 small-12">
             @yield('content')
@@ -46,21 +62,7 @@
                 </p>
             </div>
         </footer>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
     </div>
 </div>
 </body>
