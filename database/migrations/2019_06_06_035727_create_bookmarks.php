@@ -14,11 +14,12 @@ class CreateBookmarks extends Migration
     public function up()
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('bookmark_id');
             $table->string('title', 255);
             $table->string('url', 512);
             $table->text('description');
-            $table->binary('thumbnail');
+            $table->binary('thumbnail')->nullable();
+            $table->boolean('public');
             $table->timestamps();
         });
     }

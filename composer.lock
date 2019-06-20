@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4dfb78d1dcb326d863dd127c130c29b6",
+    "content-hash": "bf1e4f69c3d47a90eea611bcebba7a80",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1688,16 +1688,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.29.0",
+            "version": "3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "94e104cff2b970cd87aeaf86c59d7a45113bf89e"
+                "reference": "504507fa344d15856c719730efef652ffd3e6e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/94e104cff2b970cd87aeaf86c59d7a45113bf89e",
-                "reference": "94e104cff2b970cd87aeaf86c59d7a45113bf89e",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/504507fa344d15856c719730efef652ffd3e6e49",
+                "reference": "504507fa344d15856c719730efef652ffd3e6e49",
                 "shasum": ""
             },
             "require": {
@@ -1740,7 +1740,7 @@
                 "screenshot",
                 "webpage"
             ],
-            "time": "2019-04-24T18:28:14+00:00"
+            "time": "2019-06-06T23:44:40+00:00"
         },
         {
             "name": "spatie/image",
