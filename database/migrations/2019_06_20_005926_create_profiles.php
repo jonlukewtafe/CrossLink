@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarks extends Migration
+class CreateProfiles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBookmarks extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title', 255);
-            $table->string('url', 512);
-            $table->text('description');
-            $table->binary('thumbnail');
+        Schema::create('profiles', function (Blueprint $table) {
+            $table->bigIncrements('user_id');
+            $table->text('photo');
+            $table->string('email_address', 320);
+            $table->string('first_name', 128);
+            $table->string('surname', 128);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBookmarks extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('profiles');
     }
 }
