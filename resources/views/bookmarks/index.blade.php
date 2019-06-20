@@ -1,19 +1,20 @@
 @extends('layouts.layout')
-
+@section('title' , 'CrossLink - Bookmarks')
 @section('content')
     <div class="table-scroll">
-        <table class="stack">
+        <table>
             <tr>
                 <th>Bookmark Name</th>
-                <th>Street Location</th>
+                <th>URL</th>
                 <th>Short Description</th>
                 <th>Details</th>
             </tr>
             @foreach($bookmarks as $aBookmark)
                 <tr>
-                    <td><p>{{ $aBookmark->name }}</p></td>
-                    <td><p>{{ $aBookmark->street_location }}</p></td>
-                    <td><p>{{ $aBookmark->short_desc }}</p></td>
+                    <td><p>{{ $aBookmark->title }}</p></td>
+                    <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
+                    <td><p>{{ $aBookmark->description }}</p></td>
+                    <td><p>{{ $aBookmark->thumbnail }}</p></td>
                     <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
                 </tr>
             @endforeach

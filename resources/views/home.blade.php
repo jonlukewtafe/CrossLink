@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-
+@section('title' , 'CrossLink - Login Home')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

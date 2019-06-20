@@ -17,5 +17,5 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@home');
-Route::get('/bookmarks', 'BookmarksController@index');
+Route::resource('/bookmarks', 'BookmarksController');
 Route::get('/home', 'HomeController@index')->name('home');
