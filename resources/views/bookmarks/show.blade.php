@@ -7,14 +7,19 @@
             <h2>Bookmark - {{ $bookmark->title }}</h2>
             <a href="/bookmarks/" class="button">Back</a>
             <a  href="{{$bookmark->id}}/edit" class="button success">Edit Bookmark</a>
-            <p><button class="button alert" data-open="Modal">Delete Bookmark</button></p>
+            <p>
+                <button class="button alert" data-open="Modal">Delete Bookmark</button>
+            </p>
         </div>
         <div class="small-12 medium-12 large-12 callout">
-            <img src="/images/bookmarks/{{ $bookmark->thumbnail }}" style="width:150px; height:150px; float:left;">
             <table>
                 <tr>
                     <th>ID</th>
                     <td> {{ $bookmark->id}}<td>
+                </tr>
+                <tr>
+                    <th>Thumbnail</th>
+                    <td>{{$image}}</td>
                 </tr>
                 <tr>
                     <th>Title </th>
