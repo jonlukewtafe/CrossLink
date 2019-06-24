@@ -16,7 +16,7 @@ class BookmarksSeeder extends Seeder
             'url' => 'http://www.the-art-of-web.com/javascript/ajax-validate/',
             'description' => 'Form Validation using Ajax (JavaScript | The Art of Web)',
             'thumbnail' => 'default.png',
-            'public' => '1',
+            'public' => '0',
             'created_at' => DB::raw('CURRENT_TIMESTAMP'),
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);

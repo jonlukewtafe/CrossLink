@@ -54,7 +54,6 @@ class RolesSeeder extends Seeder
         ]);
 
 
-
         // Permissions
         //1
         DB::table('permissions')->insert([
@@ -128,7 +127,6 @@ class RolesSeeder extends Seeder
         ]);
 
 
-
         //Role Has Permissions - Administrator
         DB::table('role_has_permissions')->insert([
             'permission_id' => '1',
@@ -188,5 +186,13 @@ class RolesSeeder extends Seeder
             'permission_id' => '6',
             'role_id' => '2',
         ]);
+
+        // Model Has Roles
+        DB::table('model_has_roles')->insert([
+            'role_id' => 1,
+            'model_type' => 'App\User',
+            'model_id' => 1,
+        ]);
+
     }
 }
