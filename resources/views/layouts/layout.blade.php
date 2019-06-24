@@ -31,7 +31,8 @@
                 @if (Route::has('login'))
                     <div class="top-right links">
                         @auth
-                            <a href="{{ url('/profile') }}">Profile</a>
+                            <a href="{{url('/profiles')}}">Profile</a>
+                            {{--/, [$user->id]) - This is the code I tried to use to get to the following URL: /profiles/{user_id}
                             {{--<a href="{{ url('/profile') }}">Profile</a>--}}
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"

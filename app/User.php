@@ -43,8 +43,12 @@ class User extends Authenticatable
 
     public function user() {
         $this->belongsToMany('App\Bookmark');
-        //$this->belongsToMany('App\Profile');
+
         //$this->belongsToMany(Role::class, 'role_user');
+    }
+
+    public function profile() {
+        $this->belongsTo('App\Profile');
     }
 
 

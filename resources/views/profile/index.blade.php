@@ -39,8 +39,7 @@
             </tr>
             @foreach($bookmarks as $aBookmark)
                 @if($aBookmark->public == 0)
-                    {{--@hasrole('administrator')--}}
-                    @hasanyrole('writer|administrator')
+                    @role('user')
                     <tr>
                         <td><p>{{ $aBookmark->title }}</p></td>
                         <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
@@ -48,8 +47,7 @@
                         <td><img src="/images/bookmarks/{{$aBookmark->thumbnail}}"/></td>
                         <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
                     </tr>
-                    {{--@endhasrole--}}
-                    @endhasanyrole
+                    @endrole
                 @endif
             @endforeach
         </table>
