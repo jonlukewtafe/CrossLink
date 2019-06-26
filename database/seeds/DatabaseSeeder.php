@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TagsSeeder::class);
         $this->call(BookmarksSeeder::class);
         $this->call(UserBookmarkSeeder::class);
+        $this->call(TagBookmarkSeeder::class);
     }
 }
