@@ -41,14 +41,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user() {
-        $this->belongsToMany('App\Bookmark');
-
-        //$this->belongsToMany(Role::class, 'role_user');
+    public function user()
+    {
+        return $this->belongsToMany('App\Bookmark');
     }
 
-    public function profile() {
-        $this->belongsTo('App\Profile');
+    public function role(){
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    public function tag(){
+        return $this->belongsToMany(Tags::class, 'role_user');
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo('App\Profile');
     }
 
 
@@ -56,6 +64,6 @@ class User extends Authenticatable
     {
         $user = auth()->user();
         $user1 = $user->getAuthIdentifierName();
-        return($user1);
+        return ($user1);
     }
 }

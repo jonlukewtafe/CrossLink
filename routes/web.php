@@ -1,4 +1,5 @@
 <?php
+use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -9,11 +10,15 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+|   This code is to be used later for another view
+|   Route::get('/', function()
+|   {
+|       $tag = Tag::find(5);
+|        return $tag->bookmarks;
+|   });
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+
+*/
 
 Auth::routes();
 Route::get('/', 'HomeController@home');

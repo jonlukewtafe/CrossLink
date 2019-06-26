@@ -39,16 +39,14 @@
             </tr>
             @foreach($bookmarks as $aBookmark)
                 @if($aBookmark->public == 0)
-                    {{--@hasrole('administrator')--}}
                     @hasanyrole('writer|administrator')
-                    <tr>
-                        <td><p>{{ $aBookmark->title }}</p></td>
-                        <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
-                        <td><p>{{ $aBookmark->description }}</p></td>
-                        <td><img src="/images/bookmarks/{{$aBookmark->thumbnail}}"/></td>
-                        <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
-                    </tr>
-                    {{--@endhasrole--}}
+                        <tr>
+                            <td><p>{{ $aBookmark->title }}</p></td>
+                            <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
+                            <td><p>{{ $aBookmark->description }}</p></td>
+                            <td><img src="/images/bookmarks/{{$aBookmark->thumbnail}}"/></td>
+                            <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
+                        </tr>
                     @endhasanyrole
                 @endif
             @endforeach
