@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Bookmark;
-use Cviebrock\EloquentTaggable\Models\Tag;
 use Cviebrock\EloquentTaggable\Taggable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -12,18 +11,20 @@ use Image;
 class BookmarksController extends Controller
 {
     use Taggable;
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index', 'show');
     }
 
-    public function show($id){
+    public function show($id)
+    {
 
         $bookmark = Bookmark::findOrFail($id);
 
-        $image = public_path('images\bookmarks' .  $bookmark->thumbnail);
+        $image = public_path('images\bookmarks' . $bookmark->thumbnail);
 
-        return view('bookmarks.show', compact('bookmark', 'image'/*, 'tags'*/));
+        return view('bookmarks.show', compact('bookmark', 'image'));
     }
 
     /**
@@ -42,11 +43,10 @@ class BookmarksController extends Controller
         $bookmark = Bookmark::findOrFail($id);
         $bookmark->tags()->detach($id);
         $bookmark->delete();
-        if($bookmark->thumbnail == 'default.jpg') {
+        if ($bookmark->thumbnail == 'default.jpg') {
             return redirect('/bookmarks');
-        }
-        else {
-            $image = public_path('/images/bookmarks/' .  $bookmark->thumbnail);
+        } else {
+            $image = public_path('/images/bookmarks/' . $bookmark->thumbnail);
             File::delete($image);
             return redirect('/bookmarks/');
         }
@@ -97,11 +97,15 @@ class BookmarksController extends Controller
         $bookmark->save();
         return redirect("/bookmarks");
     }
-    
+
     public function index()
     {
         $bookmarks = Bookmark::all();
-        $user = Auth::user()->getAuthIdentifier();
+
+        if (Auth::user() != null) {
+            $user = Auth::user()->getAuthIdentifier();
+        }
+
         return view('bookmarks.index', compact('bookmarks', 'user'));
     }
 

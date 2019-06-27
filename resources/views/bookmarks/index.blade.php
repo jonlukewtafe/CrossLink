@@ -2,7 +2,9 @@
 @section('title' , 'CrossLink - Bookmarks')
 @section('content')
     <div class="table-scroll">
+        @hasanyrole('user'|'administrator')
         <a href="{{action('BookmarksController@create')}}" class="button">Create New Bookmark</a>
+        @endhasanyrole
         <table>
             <tr>
                 <h3>Public Bookmarks</h3>
@@ -26,7 +28,9 @@
                 @endif
             @endforeach
         </table>
+        @hasanyrole('user|administrator')
         <table>
+
             <tr>
                 <h3>Private Bookmarks</h3>
             </tr>
@@ -52,7 +56,6 @@
                 @endif
             @endforeach
             @endhasrole
-
             @hasrole('administrator')
             <tr>
                 <th>Bookmark Name</th>
@@ -76,5 +79,6 @@
             @endforeach
             @endhasrole
         </table>
+        @endhasanyrole
     </div>
 @endsection
