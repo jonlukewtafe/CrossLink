@@ -34,6 +34,16 @@
                         <textarea name="description">{{ $bookmark->description }}</textarea>
                     </label>
                 </div>
+                <div class="large-10 large-offset-1 medium-10 medium-offset-1  small-12">
+                    <h5>Tags</h5>
+                    <div class="form-group">
+                        <textarea name="tag" class="form-control-file">
+                            {{--@foreach($bookmark->tags as $aTag)
+                                {{$aTag->name}}
+                            @endforeach--}}
+                        </textarea>
+                    </div>
+                </div>
                 <div class="large-offset-1 medium-offset-1">
                     <a href="/bookmarks/{{$bookmark->id}}" type="submit" class="button">Back</a>
                 </div>

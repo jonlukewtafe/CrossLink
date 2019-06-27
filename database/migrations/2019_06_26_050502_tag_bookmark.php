@@ -13,12 +13,12 @@ class TagBookmark extends Migration
      */
     public function up()
     {
-        Schema::create('tag_bookmark', function (Blueprint $table) {
+        /*Schema::create('tag_bookmark', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('bookmark_id');
             $table->integer('tag_id');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**

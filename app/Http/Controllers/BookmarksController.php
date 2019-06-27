@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Bookmark;
+use Cviebrock\EloquentTaggable\Models\Tag;
+use Cviebrock\EloquentTaggable\Taggable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Image;
-use VerumConsilium\Browsershot\Facades\PDF;
-use VerumConsilium\Browsershot\Facades\Screenshot;
 
 class BookmarksController extends Controller
 {
+    use Taggable;
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,9 +20,10 @@ class BookmarksController extends Controller
     public function show($id){
 
         $bookmark = Bookmark::findOrFail($id);
+
         $image = public_path('images\bookmarks' .  $bookmark->thumbnail);
 
-        return view('bookmarks.show', compact('bookmark', 'image'));
+        return view('bookmarks.show', compact('bookmark', 'image'/*, 'tags'*/));
     }
 
     /**
@@ -30,12 +33,14 @@ class BookmarksController extends Controller
      */
     public function create()
     {
-        return view('bookmarks.add');
+        $bookmarks = Bookmark::all();
+        return view('bookmarks.add', compact('bookmarks'));
     }
+
     public function destroy($id)
     {
         $bookmark = Bookmark::findOrFail($id);
-        $bookmark->trails()->detach($id);
+        $bookmark->tags()->detach($id);
         $bookmark->delete();
         if($bookmark->thumbnail == 'default.jpg') {
             return redirect('/bookmarks');
@@ -49,6 +54,7 @@ class BookmarksController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         $validated = request()->validate([
             'title' => ['required'],
             'url' => ['required'],
@@ -56,14 +62,23 @@ class BookmarksController extends Controller
             'public' => []
         ]);
 
-        Bookmark::create($validated);
+        $bookmark = Bookmark::Create([
+            'user_id' => $user->id,
+            'title' => $request->input('title'),
+            'url' => $request->input('url'),
+            'description' => $request->input('description'),
+            //'status' => $status,
+        ]);
+
+        $tags = explode(',', $request->input('tag'));
+        $bookmark->retag($tags);
         return redirect('/bookmarks');
     }
 
     public function edit($id)
     {
         $bookmark = Bookmark::findOrFail($id);
-        return view('bookmarks.edit', compact('bookmark'));
+        return view('bookmarks.edit', compact('bookmark', 'tags'));
     }
 
     public function update(Request $request, $id)
@@ -74,13 +89,11 @@ class BookmarksController extends Controller
             'description' => ['required']
         ]);
         $bookmark = Bookmark::find($id);
+        $tags = explode(',', $request->input('tag'));
         $bookmark->title = $request->get('title');
         $bookmark->url = $request->get('url');
         $bookmark->description = $request->get('description');
-     // $filename = time() . '.' . '.png';
-     // ($request->get('url'))->download();
-     // $bookmark->thumbnail = Browsershot::url($request->get('url'))->savePdf("images/bookmarks/test.pdf");
-     // save('images/bookmarks/' . $filename);
+        $bookmark->retag($tags);
         $bookmark->save();
         return redirect("/bookmarks");
     }
@@ -88,7 +101,8 @@ class BookmarksController extends Controller
     public function index()
     {
         $bookmarks = Bookmark::all();
-        return view('bookmarks.index', compact('bookmarks', 'image'));
+        $user = Auth::user()->getAuthIdentifier();
+        return view('bookmarks.index', compact('bookmarks', 'user'));
     }
 
 

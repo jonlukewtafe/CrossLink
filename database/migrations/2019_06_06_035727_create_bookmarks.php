@@ -20,6 +20,7 @@ class CreateBookmarks extends Migration
             $table->text('description');
             $table->binary('thumbnail')->nullable();
             $table->boolean('public')->default(0);
+            $table->integer('user_id')->default(1);
             $table->timestamps();
         });
     }

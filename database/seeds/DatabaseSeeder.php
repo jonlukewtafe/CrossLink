@@ -16,9 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesSeeder::class);
         $this->call(ProfilesSeeder::class);
         $this->call(SocialMediaLinksSeeder::class);
-        $this->call(TagsSeeder::class);
         $this->call(BookmarksSeeder::class);
         $this->call(UserBookmarkSeeder::class);
-        $this->call(TagBookmarkSeeder::class);
     }
 }
