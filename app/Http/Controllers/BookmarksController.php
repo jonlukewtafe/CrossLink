@@ -61,7 +61,6 @@ class BookmarksController extends Controller
             'title' => $request->input('title'),
             'url' => $request->input('url'),
             'description' => $request->input('description'),
-            //'status' => $status,
         ]);
 
         $tags = explode(',', $request->input('tag'));
