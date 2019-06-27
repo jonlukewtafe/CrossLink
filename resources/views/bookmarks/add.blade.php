@@ -34,7 +34,7 @@
                     </label>
                 </div>
                 <div class="large-10 large-offset-1 medium-10 medium-offset-1  small-12">
-                    <label for="public">Public?
+                    <label for="public">Public Bookmark?
                         <input type="checkbox" name="public" value="1">
                     </label>
                 </div>

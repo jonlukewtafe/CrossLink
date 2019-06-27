@@ -71,7 +71,7 @@ class BookmarksController extends Controller
     public function edit($id)
     {
         $bookmark = Bookmark::findOrFail($id);
-        return view('bookmarks.edit', compact('bookmark', 'tags'));
+        return view('bookmarks.edit', compact('bookmark'));
     }
 
     public function update(Request $request, $id)

@@ -8,10 +8,10 @@
             <p><b>You are not logged in. To be able to utilize the complete system, you must register or login</b></p>
         @endguest
         @role('administrator')
-        <h1>YOU ARE AN ADMINISTRATOR!</h1>
+        <h1>You are an administrator. This means you have access to every bookmark in the database, as well as the ability to remove tags and all bookmarks.</h1>
         @endrole
         @role('user')
-        <h1>You are only and ordinary user :(</h1>
+        <h1>You are now able to create bookmarks and modify them. You can also delete private bookmarks as well.</h1>
         @endrole
     </div>
 @endsection

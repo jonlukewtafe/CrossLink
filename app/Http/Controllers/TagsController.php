@@ -24,11 +24,6 @@ class TagsController extends Controller
         return view('tags.index', compact('tags'));
     }
 
-    public function clear()
-    {
-
-    }
-
     public function create()
     {
         $tags = Tag::all();
