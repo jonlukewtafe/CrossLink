@@ -2,9 +2,10 @@
 @section('title' , 'CrossLink - Bookmarks')
 @section('content')
     <div class="table-scroll">
-        @hasanyrole('user'|'administrator')
+        @hasanyrole('user|administrator')
         <a href="{{action('BookmarksController@create')}}" class="button">Create New Bookmark</a>
         @endhasanyrole
+        @unlessrole('administrator')
         <table>
             <tr>
                 <h3>Public Bookmarks</h3>
@@ -28,13 +29,12 @@
                 @endif
             @endforeach
         </table>
-        @hasanyrole('user|administrator')
+        @endunlessrole
         <table>
-
+            @hasrole('user')
             <tr>
                 <h3>Private Bookmarks</h3>
             </tr>
-            @hasrole('user')
             <tr>
                 <th>Bookmark Name</th>
                 <th>URL</th>
@@ -43,20 +43,21 @@
                 <th>Details</th>
             </tr>
             @foreach($bookmarks as $aBookmark)
-                @if($aBookmark->user_id == $user)
-                    @if($aBookmark->public == 0)
-                        <tr>
-                            <td><p>{{ $aBookmark->title }}</p></td>
-                            <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
-                            <td><p>{{ $aBookmark->description }}</p></td>
-                            <td><img src="/images/bookmarks/{{$aBookmark->thumbnail}}"/></td>
-                            <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
-                        </tr>
-                    @endif
+                @if($aBookmark->user_id == $user && $aBookmark->public == 0)
+                    <tr>
+                        <td><p>{{ $aBookmark->title }}</p></td>
+                        <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
+                        <td><p>{{ $aBookmark->description }}</p></td>
+                        <td><img src="/images/bookmarks/{{$aBookmark->thumbnail}}"/></td>
+                        <td><a href="/bookmarks/{{ $aBookmark->id }}">Details</a></td>
+                    </tr>
                 @endif
             @endforeach
             @endhasrole
             @hasrole('administrator')
+            <tr>
+                <h3>Bookmarks</h3>
+            </tr>
             <tr>
                 <th>Bookmark Name</th>
                 <th>URL</th>
@@ -66,7 +67,7 @@
                 <th>Details</th>
             </tr>
             @foreach($bookmarks as $aBookmark)
-                @if($aBookmark->public == 0)
+                @if($aBookmark->public == 0 || $aBookmark->user_id == 1)
                     <tr>
                         <td><p>{{ $aBookmark->title }}</p></td>
                         <td><a href="{{$aBookmark->url}}">{{ $aBookmark->url }}</a></td>
@@ -79,6 +80,5 @@
             @endforeach
             @endhasrole
         </table>
-        @endhasanyrole
     </div>
 @endsection

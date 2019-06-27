@@ -1,7 +1,6 @@
 <?php
 
 use App\Bookmark;
-use Cviebrock\EloquentTaggable\Models\Tag;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +20,6 @@ use Cviebrock\EloquentTaggable\Models\Tag;
 Route::get('/test', function()
 {
     $tag = Bookmark::all();
-
-    //$tag = Tag::findByName('search');
     return $tag;
 });
 
@@ -32,5 +29,5 @@ Auth::routes();
 Route::get('/', 'HomeController@home');
 Route::resource('/bookmarks', 'BookmarksController');
 Route::resource('/tags', 'TagsController');
-Route::resource('/profile', 'ProfilesController');
+Route::resource('/profiles', 'ProfilesController');
 Route::get('/home', 'HomeController@index')->name('home');

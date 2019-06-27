@@ -14,11 +14,12 @@ class CreateProfiles extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->bigIncrements('user_id');
-            $table->text('photo');
+            $table->bigIncrements('id');
+            $table->text('photo')->default('default.png');
             $table->string('email_address', 320);
             $table->string('first_name', 128);
             $table->string('surname', 128);
+            $table->integer('user_id')->default(null);
             $table->timestamps();
         });
     }

@@ -46,17 +46,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Bookmark');
     }
 
-    public function role(){
-        return $this->belongsToMany(Role::class, 'role_user');
-    }
-
-    public function tag(){
-        return $this->belongsToMany(Tags::class, 'role_user');
-    }
-
     public function profile()
     {
-        return $this->belongsTo('App\Profile');
+        return $this->belongsToMany(Profile::class, 'users');
     }
 
 

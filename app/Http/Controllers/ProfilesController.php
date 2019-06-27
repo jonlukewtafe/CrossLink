@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Profile;
 
 class ProfilesController extends Controller
 {
-    public function index($id)
+    public function show($id)
     {
-        //$profiles = Profile::all();
         $profile = Profile::findOrFail($id);
-        $image = public_path('images\bookmarks' .  $profile>photo);
 
-        return view('profile.index', compact('profile', 'image'));
+        return view('profile.index', compact('profile'));
+
+    }
+    public function edit($id)
+    {
+        $profile = Profile::findOrFail($id);
+        return view('profile.edit', compact('profile'));
 
     }
 }
