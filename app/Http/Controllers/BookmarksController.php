@@ -41,15 +41,9 @@ class BookmarksController extends Controller
     public function destroy($id)
     {
         $bookmark = Bookmark::findOrFail($id);
-        $bookmark->tags->detach($id);
+        $bookmark->detag();
         $bookmark->delete();
-        if ($bookmark->thumbnail == 'default.jpg') {
-            return redirect('/bookmarks');
-        } else {
-            $image = public_path('/images/bookmarks/' . $bookmark->thumbnail);
-            File::delete($image);
-            return redirect('/bookmarks/');
-        }
+        return redirect('/bookmarks');
     }
 
     public function store(Request $request)

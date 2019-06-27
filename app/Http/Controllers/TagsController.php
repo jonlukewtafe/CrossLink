@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TagsController extends Controller
 {
-    public function show($id){
+    public function show($id)
+    {
 
         $tag = Tag::findOrFail($id);
         $bookmarks = Bookmark::withAnyTags($tag->name)->get();
@@ -22,7 +23,9 @@ class TagsController extends Controller
         $tags = Tag::all();
         return view('tags.index', compact('tags'));
     }
-    public function clear(){
+
+    public function clear()
+    {
 
     }
 
@@ -44,10 +47,11 @@ class TagsController extends Controller
         return redirect('/tags');
     }
 
-    public function destroy($id)
+    public function destroy($name)
     {
-        $tag = Tag::findorFail($id);
+        $tag = Tag::findByName($name);
         $tag->delete();
+
         return redirect('/tags');
     }
 

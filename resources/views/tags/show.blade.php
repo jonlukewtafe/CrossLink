@@ -7,8 +7,11 @@
             <h2>Tag - {{ $tag->name }}</h2>
             <a href="/tags/" class="button">Back</a>
             @hasrole('administrator')
-        <!--<a href="{{--action('TagsController@destory')--}}" class="button alert">Delete Tag</a>
-                <button class="button alert" data-open="modal">Delete Tag</button>-->
+                <form action="{{ url('/tags', ['name' => $tag->name]) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="button alert" type="submit">Delete Tag</button>
+                </form>
             @endhasrole
         </div>
         <div class="small-12 medium-12 large-12 callout">
