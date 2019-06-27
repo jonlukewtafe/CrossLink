@@ -19,7 +19,7 @@ use App\Bookmark;
 */
 Route::get('/test', function()
 {
-    $tag = Bookmark::all();
+    $tag = Bookmark::all()->where('user_id', 2) ;
     return $tag;
 });
 

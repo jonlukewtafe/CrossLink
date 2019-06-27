@@ -4,8 +4,6 @@
     <div class="table-scroll">
         @hasrole('administrator')
         <a href="{{action('TagsController@create')}}" class="button">Create New Tag</a>
-
-
         @endhasrole
         <table>
             <tr>
