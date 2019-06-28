@@ -31,11 +31,11 @@
                         <textarea name="email">{{ $profile->email }}</textarea>
                     </label>
                 </div>
-                <!--<div class="large-10 large-offset-1 medium-10 medium-offset-1  small-12">
-                    <label for="email">Email Address
-                        <textarea name="email">{{-- $bookmark->email --}}</textarea>
+                <div class="large-10 large-offset-1 medium-10 medium-offset-1  small-12">
+                    <label for="password">Password
+                        <textarea name="password"></textarea>
                     </label>
-                </div>-->
+                </div>
                 <div class="large-offset-3 medium-offset-3 hide-for-small-only">
                     <input type="reset" class="button alert" value="Clear Form">
                 </div>

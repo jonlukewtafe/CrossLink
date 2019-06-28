@@ -27,7 +27,7 @@ Route::get('/test', function()
 
 Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@home')->middleware('verified');
-//Route::get('/profiles/edit/', 'ProfilesController@edit')->middleware('verified');
+Route::get('/profiles/admin/edit/', 'ProfilesController@adminedit')->middleware('verified');
 Route::resource('/bookmarks', 'BookmarksController');
 Route::resource('/tags', 'TagsController');
 Route::resource('/profiles', 'ProfilesController')->middleware('verified');
